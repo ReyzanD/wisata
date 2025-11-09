@@ -1,8 +1,8 @@
 # 🏝️ Wisata Indonesia
 
 <p align="center">
-  <strong>A Modern Tourism Destination Management System</strong><br>
-  Built with Laravel 11, Tailwind CSS, Alpine.js & Livewire
+  <strong>Sistem Manajemen Destinasi Wisata Modern</strong><br>
+  Dibangun dengan Laravel 11, Tailwind CSS, Alpine.js & Livewire
 </p>
 
 <p align="center">
@@ -12,41 +12,41 @@
   <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
 </p>
 
-## 📖 About Wisata Indonesia
+## 📖 Tentang Wisata Indonesia
 
-Wisata Indonesia is a comprehensive tourism destination management system designed to showcase Indonesia's beautiful tourist destinations. The platform allows users to discover destinations, read reviews, and share their experiences, while administrators can manage content through an intuitive dashboard.
+Wisata Indonesia adalah sistem manajemen destinasi wisata yang komprehensif yang dirancang untuk menampilkan destinasi wisata indah di Indonesia. Platform ini memungkinkan pengguna untuk menemukan destinasi, membaca ulasan, dan berbagi pengalaman mereka, sementara administrator dapat mengelola konten melalui dashboard yang intuitif.
 
-### ✨ Key Features
+### ✨ Fitur Utama
 
-**For Visitors:**
-- 🔍 Browse and search tourist destinations
-- 📂 Filter by categories (Beach, Mountain, Culture, etc.)
-- ⭐ View ratings and reviews from other travelers
-- 📝 Submit reviews and ratings (requires login)
-- 🖼️ View beautiful image galleries
-- 📱 Fully responsive design for mobile and desktop
+**Untuk Pengunjung:**
+- 🔍 Jelajahi dan cari destinasi wisata
+- 📂 Filter berdasarkan kategori (Pantai, Gunung, Budaya, dll.)
+- ⭐ Lihat rating dan ulasan dari traveler lain
+- 📝 Kirim ulasan dan rating (memerlukan login)
+- 🖼️ Lihat galeri foto yang indah
+- 📱 Desain responsif penuh untuk mobile dan desktop
 
-**For Administrators:**
-- 📊 Dashboard with statistics and analytics
-- 🏖️ Manage destinations (CRUD operations)
-- 🗂️ Manage categories
-- 🖼️ Manage photo galleries with image upload
-- 💬 Manage user reviews
-- 👥 User management
-- 🔒 Role-based access control
+**Untuk Administrator:**
+- 📊 Dashboard dengan statistik dan analitik
+- 🏖️ Kelola destinasi (operasi CRUD)
+- 🗂️ Kelola kategori
+- 🖼️ Kelola galeri foto dengan upload gambar
+- 💬 Kelola ulasan pengguna
+- 👥 Manajemen pengguna
+- 🔒 Kontrol akses berbasis role
 
-## 🛠️ Tech Stack
+## 🛠️ Teknologi yang Digunakan
 
 - **Backend:** Laravel 11 (PHP 8.2+)
 - **Frontend:** Tailwind CSS, Alpine.js
 - **Database:** MySQL
-- **Authentication:** Laravel Breeze with Livewire
+- **Authentication:** Laravel Breeze dengan Livewire
 - **File Storage:** Laravel Storage (Public Disk)
 - **Asset Bundling:** Vite
 
-## 📋 Requirements
+## 📋 Kebutuhan Sistem
 
-Before installing, make sure you have:
+Sebelum instalasi, pastikan Anda memiliki:
 
 - PHP >= 8.2
 - Composer
@@ -54,44 +54,44 @@ Before installing, make sure you have:
 - MySQL >= 8.0
 - Git
 
-## 🚀 Installation Instructions
+## 🚀 Panduan Instalasi
 
-### 1. Clone the Repository
+### 1. Clone Repository
 
 ```bash
-git clone <your-repo-url>
+git clone <url-repo-anda>
 cd wisata
 ```
 
-### 2. Install PHP Dependencies
+### 2. Install Dependencies PHP
 
 ```bash
 composer install
 ```
 
-### 3. Install JavaScript Dependencies
+### 3. Install Dependencies JavaScript
 
 ```bash
 npm install
 ```
 
-### 4. Environment Configuration
+### 4. Konfigurasi Environment
 
-Copy the example environment file and configure it:
+Salin file environment contoh dan konfigurasikan:
 
 ```bash
 cp .env.example .env
 ```
 
-Edit `.env` file and set your database credentials:
+Edit file `.env` dan atur kredensial database Anda:
 
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=wisata_232136
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
+DB_USERNAME=username_anda
+DB_PASSWORD=password_anda
 
 APP_NAME="Wisata Indonesia"
 APP_URL=http://localhost:8000
@@ -103,38 +103,38 @@ APP_URL=http://localhost:8000
 php artisan key:generate
 ```
 
-### 6. Create Database
+### 6. Buat Database
 
-Create a new MySQL database:
+Buat database MySQL baru:
 
 ```sql
 CREATE DATABASE wisata_232136;
 ```
 
-### 7. Run Migrations
+### 7. Jalankan Migrasi
 
 ```bash
 php artisan migrate
 ```
 
-### 8. Seed the Database (Optional)
+### 8. Seed Database (Opsional)
 
-Populate with sample data:
+Isi dengan data contoh:
 
 ```bash
 php artisan db:seed
 ```
 
-This will create:
-- Admin user
-- Sample categories
-- Sample destinations
-- Sample galleries
-- Sample reviews
+Ini akan membuat:
+- User admin
+- Kategori contoh
+- Destinasi contoh
+- Galeri contoh
+- Ulasan contoh
 
-### 9. Create Storage Link
+### 9. Buat Storage Link
 
-Create symbolic link for file storage:
+Buat symbolic link untuk penyimpanan file:
 
 ```bash
 php artisan storage:link
@@ -142,38 +142,38 @@ php artisan storage:link
 
 ### 10. Build Frontend Assets
 
-**For development:**
+**Untuk development:**
 ```bash
 npm run dev
 ```
 
-**For production:**
+**Untuk production:**
 ```bash
 npm run build
 ```
 
-### 11. Start the Development Server
+### 11. Jalankan Development Server
 
-In a new terminal:
+Di terminal baru:
 
 ```bash
 php artisan serve
 ```
 
-Visit: `http://localhost:8000`
+Kunjungi: `http://localhost:8000`
 
-## 👤 Default Admin Credentials
+## 👤 Kredensial Admin Default
 
-After seeding the database, you can login as admin:
+Setelah seeding database, Anda dapat login sebagai admin:
 
 ```
 Email: admin@wisata.com
 Password: password
 ```
 
-**⚠️ Important:** Change the admin password immediately after first login!
+**⚠️ Penting:** Ubah password admin segera setelah login pertama kali!
 
-## 📂 Project Structure
+## 📂 Struktur Proyek
 
 ```
 wisata/
@@ -204,59 +204,59 @@ wisata/
     └── storage/               # Symlink to storage
 ```
 
-## 🗄️ Database Structure
+## 🗄️ Struktur Database
 
-All tables use `_232136` suffix:
+Semua tabel menggunakan suffix `_232136`:
 
-- `users` - User accounts
-- `categories_232136` - Destination categories
-- `destinations_232136` - Tourist destinations
-- `galleries_232136` - Image galleries
-- `reviews_232136` - User reviews and ratings
+- `users` - Akun pengguna
+- `categories_232136` - Kategori destinasi
+- `destinations_232136` - Destinasi wisata
+- `galleries_232136` - Galeri gambar
+- `reviews_232136` - Ulasan dan rating pengguna
 
-## 🎨 Features in Detail
+## 🎨 Fitur Detail
 
-### 1. Image Upload System
-- Upload destination main images
-- Upload gallery images
-- Automatic image validation (max 2MB, JPEG/PNG/JPG/GIF)
-- Automatic old image deletion on update
-- Smart fallback: Destination image → Gallery image → URL → Placeholder
+### 1. Sistem Upload Gambar
+- Upload gambar utama destinasi
+- Upload gambar galeri
+- Validasi gambar otomatis (max 2MB, JPEG/PNG/JPG/GIF)
+- Penghapusan gambar lama otomatis saat update
+- Fallback pintar: Gambar destinasi → Gambar galeri → URL → Placeholder
 
-### 2. Rating System
-- 5-star rating display
-- Average rating calculation
-- Review count display
-- Ratings visible on:
-  - Homepage destination cards
-  - Destination listing
-  - Destination detail page
+### 2. Sistem Rating
+- Tampilan rating bintang 5
+- Perhitungan rating rata-rata
+- Tampilan jumlah ulasan
+- Rating terlihat di:
+  - Card destinasi homepage
+  - Listing destinasi
+  - Halaman detail destinasi
 
-### 3. Search & Filter
-- Text search (name, location, description)
-- Category filtering
-- Pagination support
+### 3. Pencarian & Filter
+- Pencarian teks (nama, lokasi, deskripsi)
+- Filter kategori
+- Dukungan pagination
 
-### 4. Admin Dashboard
-- Statistics overview
-- Recent destinations list
-- Complete CRUD operations for all resources
-- User management
+### 4. Dashboard Admin
+- Ringkasan statistik
+- Daftar destinasi terbaru
+- Operasi CRUD lengkap untuk semua resource
+- Manajemen pengguna
 
-## 🔧 Configuration
+## 🔧 Konfigurasi
 
-### File Upload Settings
+### Pengaturan Upload File
 
-To change max upload size, edit `php.ini`:
+Untuk mengubah ukuran upload maksimal, edit `php.ini`:
 
 ```ini
 upload_max_filesize = 2M
 post_max_size = 2M
 ```
 
-### Storage Permissions
+### Permissions Storage
 
-Ensure proper permissions:
+Pastikan permissions yang tepat:
 
 ```bash
 chmod -R 775 storage bootstrap/cache
@@ -265,103 +265,103 @@ chown -R www-data:www-data storage bootstrap/cache
 
 ## 🐛 Troubleshooting
 
-### Images Not Showing?
+### Gambar Tidak Muncul?
 
-1. Ensure storage link exists:
+1. Pastikan storage link ada:
    ```bash
    php artisan storage:link
    ```
 
-2. Check folder permissions:
+2. Periksa permissions folder:
    ```bash
    chmod -R 775 storage/app/public
    ```
 
-### Can't Login?
+### Tidak Bisa Login?
 
-1. Clear cache:
+1. Bersihkan cache:
    ```bash
    php artisan cache:clear
    php artisan config:clear
    ```
 
-2. Re-seed database:
+2. Seed ulang database:
    ```bash
    php artisan migrate:fresh --seed
    ```
 
-### Livewire Not Working?
+### Livewire Tidak Berfungsi?
 
-Make sure `@livewireStyles` and `@livewireScripts` are in `layouts/app.blade.php`
+Pastikan `@livewireStyles` dan `@livewireScripts` ada di `layouts/app.blade.php`
 
-## 📱 Usage Guide
+## 📱 Panduan Penggunaan
 
-### For End Users:
+### Untuk Pengguna:
 
-1. **Browse Destinations:** Visit homepage to see featured destinations
-2. **Search:** Use search bar to find specific destinations
-3. **Filter:** Select categories to filter destinations
-4. **View Details:** Click on any destination to see full details
-5. **Submit Review:** Login/Register to submit ratings and reviews
+1. **Jelajahi Destinasi:** Kunjungi homepage untuk melihat destinasi unggulan
+2. **Cari:** Gunakan search bar untuk menemukan destinasi spesifik
+3. **Filter:** Pilih kategori untuk memfilter destinasi
+4. **Lihat Detail:** Klik destinasi untuk melihat detail lengkap
+5. **Kirim Ulasan:** Login/Register untuk mengirim rating dan ulasan
 
-### For Administrators:
+### Untuk Administrator:
 
-1. **Login:** Use admin credentials at `/login`
-2. **Dashboard:** View statistics and manage content
-3. **Add Destination:**
-   - Go to Destinations → Add New
-   - Fill in details
-   - Upload main image
-   - Save
-4. **Add Gallery:**
-   - Go to Galleries → Add New
-   - Upload image OR provide URL
-   - Link to destination
-5. **Manage Reviews:** View, edit, or delete user reviews
+1. **Login:** Gunakan kredensial admin di `/login`
+2. **Dashboard:** Lihat statistik dan kelola konten
+3. **Tambah Destinasi:**
+   - Ke Destinasi → Tambah Baru
+   - Isi detail
+   - Upload gambar utama
+   - Simpan
+4. **Tambah Galeri:**
+   - Ke Galeri → Tambah Baru
+   - Upload gambar ATAU berikan URL
+   - Link ke destinasi
+5. **Kelola Ulasan:** Lihat, edit, atau hapus ulasan pengguna
 
-## 🔐 Security
+## 🔐 Keamanan
 
-- CSRF protection enabled
-- Password hashing with bcrypt
-- XSS protection
-- SQL injection prevention via Eloquent ORM
-- File upload validation
-- Role-based access control
+- Perlindungan CSRF aktif
+- Password hashing dengan bcrypt
+- Perlindungan XSS
+- Pencegahan SQL injection via Eloquent ORM
+- Validasi upload file
+- Kontrol akses berbasis role
 
-## 🤝 Contributing
+## 🤝 Kontribusi
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Kontribusi sangat diterima! Silakan submit Pull Request.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork repository ini
+2. Buat feature branch (`git checkout -b feature/FiturKeren`)
+3. Commit perubahan Anda (`git commit -m 'Tambah fitur keren'`)
+4. Push ke branch (`git push origin feature/FiturKeren`)
+5. Buka Pull Request
 
-## 📝 Notes
+## 📝 Catatan
 
-- All database tables use `_232136` suffix for uniqueness
-- Default storage is in `storage/app/public`
-- Images are publicly accessible via `/storage` URL
-- Frontend uses Vite for hot module replacement
-- Admin area uses Livewire for reactive components
+- Semua tabel database menggunakan suffix `_232136` untuk keunikan
+- Storage default ada di `storage/app/public`
+- Gambar dapat diakses publik via URL `/storage`
+- Frontend menggunakan Vite untuk hot module replacement
+- Area admin menggunakan Livewire untuk komponen reaktif
 
 ## 🐛 Known Issues
 
-Check `BUGFIX.md` for resolved issues and solutions.
+Cek `BUGFIX.md` untuk masalah yang sudah diselesaikan dan solusinya.
 
-## 📄 License
+## 📄 Lisensi
 
-This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Proyek ini adalah software open-source dengan lisensi [MIT license](https://opensource.org/licenses/MIT).
 
-## 👨‍💻 Author
+## 👨‍💻 Pengembang
 
-Developed as part of a tourism management system project.
+Dikembangkan sebagai bagian dari proyek sistem manajemen pariwisata.
 
-## 📧 Support
+## 📧 Dukungan
 
-For issues, questions, or contributions, please open an issue on GitHub.
+Untuk issues, pertanyaan, atau kontribusi, silakan buka issue di GitHub.
 
 ---
 
-<p align="center">Made with ❤️ for Indonesian Tourism</p>
+<p align="center">Dibuat dengan ❤️ untuk Pariwisata Indonesia</p>
