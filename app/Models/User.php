@@ -64,4 +64,22 @@ class User extends Authenticatable
     {
         return $this->email_232136;
     }
+
+    // Specify the username field for authentication
+    public function username()
+    {
+        return 'email_232136';
+    }
+
+    // Relationships
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class, 'user_id_232136');
+    }
+
+    public function favoriteDestinations()
+    {
+        return $this->belongsToMany(Destination::class, 'favorites_232136', 'user_id_232136', 'destination_id_232136')
+                    ->withTimestamps();
+    }
 }

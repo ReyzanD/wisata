@@ -24,27 +24,28 @@
 ## 🟡 Nice to Have Features
 
 ### Search & Filter
+- [x] Add advanced sorting (popular, newest, highest rated, oldest, A-Z, Z-A)
+- [x] Add results counter and context display
 - [ ] Add advanced search with location filter
 - [ ] Add price range filter
-- [ ] Add sorting (popular, newest, highest rated)
 
 ### User Experience
-- [ ] Add loading states for forms
-- [ ] Add success/error toast notifications
+- [x] Add success/error toast notifications (Alpine.js, 4 types)
+- [x] Add loading states for forms (Nov 16, 2025)
 - [ ] Improve mobile navigation menu
 - [ ] Add breadcrumbs navigation
 - [ ] Add "back to top" button on long pages
 
 ### Admin Features
+- [x] Dashboard charts and analytics (Nov 16, 2025)
 - [ ] Add bulk delete for resources
 - [ ] Add export functionality (CSV, PDF)
 - [ ] Add rich text editor for descriptions
-- [ ] Dashboard charts and analytics
 - [ ] Activity logs
 
 ### User Features
+- [x] Add wishlist/favorites for destinations (Nov 16, 2025)
 - [ ] Add user profile picture upload
-- [ ] Add wishlist/favorites for destinations
 - [ ] Add share destination on social media
 - [ ] Email verification for new users
 - [ ] Password reset functionality
@@ -80,6 +81,12 @@
 - [x] Alpine.js for interactivity
 - [x] Storage link created
 - [x] Fixed gallery view field references
+- [x] Toast notification system (Nov 16, 2025)
+- [x] Advanced sorting and filtering (Nov 16, 2025)
+- [x] Fixed admin logout functionality (Nov 16, 2025)
+- [x] Wishlist/Favorites system (Nov 16, 2025)
+- [x] Dashboard Analytics with Charts (Nov 16, 2025)
+- [x] Loading states for forms (Nov 16, 2025)
 
 ## 📝 Notes
 

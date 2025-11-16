@@ -24,6 +24,7 @@ class HomeController extends Controller
     public function destinations(Request $request){
         $query = Destination::with(['category', 'galleries', 'reviews']);
 
+        // Search filter
         if($request->filled('search')){
             $search = $request->search;
             $query->where(function($q) use ($search){
@@ -33,12 +34,45 @@ class HomeController extends Controller
             });
         }
 
-        //filter by category
+        // Category filter
         if($request->filled('category')){
             $query->where('category_id_232136', $request->category);
         }
 
-        $destinations = $query->paginate(12);
+        // Sorting
+        $sort = $request->get('sort', 'newest');
+        
+        switch($sort) {
+            case 'popular':
+                // Sort by number of reviews (most popular)
+                $query->withCount('reviews')
+                      ->orderBy('reviews_count', 'desc');
+                break;
+            case 'highest_rated':
+                // Sort by average rating
+                $query->withAvg('reviews as average_rating', 'rating_232136')
+                      ->orderByDesc('average_rating');
+                break;
+            case 'oldest':
+                // Sort by oldest first
+                $query->oldest();
+                break;
+            case 'name_asc':
+                // Sort by name A-Z
+                $query->orderBy('name_232136', 'asc');
+                break;
+            case 'name_desc':
+                // Sort by name Z-A
+                $query->orderBy('name_232136', 'desc');
+                break;
+            case 'newest':
+            default:
+                // Sort by newest (default)
+                $query->latest();
+                break;
+        }
+
+        $destinations = $query->paginate(12)->appends($request->except('page'));
         $categories = Category::all();
 
         return view('public.destinations', compact('destinations', 'categories'));

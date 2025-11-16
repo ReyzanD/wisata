@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Alpine.js x-cloak */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Prevent body from clipping toast */
+html, body {
+    overflow-x: visible !important;
+    position: relative;
+}
+
+/* Toast notification - ensure fully visible */
+#toast-container {
+    position: fixed !important;
+    top: 1rem !important;
+    left: auto !important;
+    right: 0 !important;
+    z-index: 99999 !important;
+    pointer-events: none;
+    padding-right: 1rem;
+    width: auto;
+    max-width: 32rem;
+    min-width: 20rem;
+}
+
+#toast-container > div {
+    pointer-events: auto;
+}
+
+/* Make toast content larger and more readable */
+#toast-container .p-4 {
+    padding: 1.25rem !important;
+}
+
+#toast-container .text-sm {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+}
+
+#toast-container svg {
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+}
+
+/* Fallback for inline fixed positioning */
+[style*="z-index: 9999"] {
+    position: fixed !important;
+    z-index: 99999 !important;
+}
+
+@media (max-width: 640px) {
+    #toast-container {
+        left: 1rem !important;
+        right: 1rem !important;
+        padding-right: 0;
+        max-width: calc(100vw - 2rem);
+    }
+}

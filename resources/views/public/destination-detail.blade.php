@@ -183,9 +183,9 @@
                         @endphp
                         
                         @if(!$userHasReviewed)
-                            <div class="mt-8 bg-gray-50 p-6 rounded-lg border-2 border-blue-200" x-data="{ rating: 5 }">
+                            <div class="mt-8 bg-gray-50 p-6 rounded-lg border-2 border-blue-200" x-data="{ rating: 5, loading: false }">
                                 <h3 class="text-xl font-bold text-gray-900 mb-4">Tulis Ulasan Anda</h3>
-                                <form method="POST" action="{{ route('destination.review.store', $destination->id) }}">
+                                <form method="POST" action="{{ route('destination.review.store', $destination->id) }}" @submit="loading = true">
                                     @csrf
                                     
                                     <!-- Rating -->
@@ -221,14 +221,25 @@
                                                   rows="4" 
                                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
                                                   placeholder="Ceritakan pengalaman Anda di destinasi ini (minimal 10 karakter)..." 
-                                                  required>{{ old('comment_232136') }}</textarea>
+                                                  required
+                                                  x-bind:readonly="loading">{{ old('comment_232136') }}</textarea>
                                         @error('comment_232136')
                                             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
 
-                                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                        Kirim Ulasan
+                                    <button type="submit" 
+                                            class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            x-bind:disabled="loading"
+                                            x-bind:class="{ 'opacity-50 cursor-not-allowed': loading }">
+                                        <span x-show="!loading">Kirim Ulasan</span>
+                                        <span x-show="loading" class="flex items-center justify-center">
+                                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            Mengirim...
+                                        </span>
                                     </button>
                                 </form>
                             </div>
@@ -305,5 +316,93 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Toast Notification -->
+    <div id="toast-container" x-data="{
+        show: false,
+        message: '',
+        type: 'success',
+        init() {
+            @if(session('success'))
+                this.showToast('{{ session('success') }}', 'success');
+            @elseif(session('error'))
+                this.showToast('{{ session('error') }}', 'error');
+            @elseif(session('warning'))
+                this.showToast('{{ session('warning') }}', 'warning');
+            @elseif(session('info'))
+                this.showToast('{{ session('info') }}', 'info');
+            @endif
+        },
+        showToast(message, type = 'success') {
+            this.message = message;
+            this.type = type;
+            this.show = true;
+            setTimeout(() => { this.show = false; }, 5000);
+        }
+    }" 
+    @toast.window="showToast($event.detail.message, $event.detail.type)"
+    x-cloak>
+        
+        <div x-show="show" 
+             x-transition:enter="transform ease-out duration-300 transition"
+             x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+             x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="max-w-sm w-full shadow-lg rounded-lg pointer-events-auto overflow-hidden"
+             :class="{
+                'bg-green-50 border-l-4 border-green-500': type === 'success',
+                'bg-red-50 border-l-4 border-red-500': type === 'error',
+                'bg-yellow-50 border-l-4 border-yellow-500': type === 'warning',
+                'bg-blue-50 border-l-4 border-blue-500': type === 'info'
+             }">
+            
+            <div class="p-4">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                        <svg x-show="type === 'success'" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <svg x-show="type === 'error'" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <svg x-show="type === 'warning'" class="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <svg x-show="type === 'info'" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    
+                    <div class="ml-3 w-0 flex-1 pt-0.5">
+                        <p class="text-sm font-medium" 
+                           :class="{
+                              'text-green-900': type === 'success',
+                              'text-red-900': type === 'error',
+                              'text-yellow-900': type === 'warning',
+                              'text-blue-900': type === 'info'
+                           }"
+                           x-text="message"></p>
+                    </div>
+                    
+                    <div class="ml-4 flex-shrink-0 flex">
+                        <button @click="show = false" 
+                                class="inline-flex rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
+                                :class="{
+                                   'text-green-500 hover:text-green-600 focus:ring-green-500': type === 'success',
+                                   'text-red-500 hover:text-red-600 focus:ring-red-500': type === 'error',
+                                   'text-yellow-500 hover:text-yellow-600 focus:ring-yellow-500': type === 'warning',
+                                   'text-blue-500 hover:text-blue-600 focus:ring-blue-500': type === 'info'
+                                }">
+                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
