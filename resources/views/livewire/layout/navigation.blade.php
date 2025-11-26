@@ -45,6 +45,9 @@ new class extends Component
     <x-nav-link :href="route('reviews.index')" :active="request()->routeIs('reviews.*')" wire:navigate>
         {{ __('Ulasan') }}
     </x-nav-link>
+    <x-nav-link :href="route('admin.bookings.index')" :active="request()->routeIs('admin.bookings.*')" wire:navigate>
+        {{ __('Booking') }}
+    </x-nav-link>
     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')" wire:navigate>
         {{ __('Pengguna') }}
     </x-nav-link>
@@ -109,6 +112,9 @@ new class extends Component
     </x-responsive-nav-link>
     <x-responsive-nav-link :href="route('reviews.index')" :active="request()->routeIs('reviews.*')" wire:navigate>
         {{ __('Ulasan') }}
+    </x-responsive-nav-link>
+    <x-responsive-nav-link :href="route('admin.bookings.index')" :active="request()->routeIs('admin.bookings.*')" wire:navigate>
+        {{ __('Booking') }}
     </x-responsive-nav-link>
     <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')" wire:navigate>
         {{ __('Pengguna') }}
