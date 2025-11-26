@@ -9,6 +9,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BookingController;
 
 // Public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -33,6 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/favorites', [\App\Http\Controllers\FavoriteController::class, 'index'])->name('favorites.index');
     Route::post('/favorites/toggle/{destination}', [\App\Http\Controllers\FavoriteController::class, 'toggle'])->name('favorites.toggle');
     Route::get('/favorites/check/{destination}', [\App\Http\Controllers\FavoriteController::class, 'check'])->name('favorites.check');
+    
+    // Bookings
+    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+    Route::get('/bookings/create/{destination}', [BookingController::class, 'create'])->name('bookings.create');
+    Route::post('/bookings/{destination}', [BookingController::class, 'store'])->name('bookings.store');
+    Route::get('/bookings/{id}', [BookingController::class, 'show'])->name('bookings.show');
+    Route::post('/bookings/{id}/cancel', [BookingController::class, 'cancel'])->name('bookings.cancel');
 });
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function (){
@@ -43,4 +51,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function (){
     Route::resource('galleries', GalleryController::class);
     Route::resource('reviews', ReviewController::class);
     Route::resource('users', UserController::class);
+    
+    // Admin Bookings Management
+    Route::get('/bookings', [BookingController::class, 'adminIndex'])->name('admin.bookings.index');
+    Route::post('/bookings/{id}/status', [BookingController::class, 'updateStatus'])->name('admin.bookings.updateStatus');
 });

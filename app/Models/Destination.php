@@ -65,4 +65,9 @@ class Destination extends Model
         return $this->belongsToMany(User::class, 'favorites_232136', 'destination_id_232136', 'user_id_232136')
                     ->withTimestamps();
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'destination_id_232136');
+    }
 }
