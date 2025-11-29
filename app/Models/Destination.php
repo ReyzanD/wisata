@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Destination extends Model
 {
     protected $table = 'destinations_232136';
-    protected $fillable = ['name_232136', 'description_232136', 'category_id_232136', 'location_232136', 'image_232136'];
+    protected $fillable = ['name_232136', 'description_232136', 'category_id_232136', 'location_232136', 'image_232136', 'price_232136', 'daily_capacity_232136'];
+
+    protected $casts = [
+        'price_232136' => 'decimal:2',
+        'daily_capacity_232136' => 'integer',
+    ];
 
     public function category()
     {
@@ -69,5 +74,34 @@ class Destination extends Model
     public function bookings()
     {
         return $this->hasMany(Booking::class, 'destination_id_232136');
+    }
+
+    /**
+     * Get the number of people booked for a specific date
+     */
+    public function getBookedCapacityForDate($date)
+    {
+        return $this->bookings()
+            ->where('visit_date_232136', $date)
+            ->whereIn('status_232136', ['pending', 'confirmed'])
+            ->sum('number_of_people_232136');
+    }
+
+    /**
+     * Get available capacity for a specific date
+     */
+    public function getAvailableCapacityForDate($date)
+    {
+        $bookedCapacity = $this->getBookedCapacityForDate($date);
+        return max(0, $this->daily_capacity_232136 - $bookedCapacity);
+    }
+
+    /**
+     * Check if booking is possible for a specific date with number of people
+     */
+    public function canBookForDate($date, $numberOfPeople)
+    {
+        $availableCapacity = $this->getAvailableCapacityForDate($date);
+        return $availableCapacity >= $numberOfPeople;
     }
 }

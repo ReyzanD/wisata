@@ -42,6 +42,26 @@ class BookingController extends Controller
 
         $destination = Destination::findOrFail($destinationId);
 
+        // Check if destination has available capacity for the requested date
+        if (!$destination->canBookForDate($request->visit_date_232136, $request->number_of_people_232136)) {
+            $availableCapacity = $destination->getAvailableCapacityForDate($request->visit_date_232136);
+            
+            if ($availableCapacity === 0) {
+                return back()->withInput()->with('error', 
+                    "⚠️ DESTINASI PENUH - Tidak ada kapasitas tersedia untuk tanggal " . 
+                    date('d/m/Y', strtotime($request->visit_date_232136)) . 
+                    ". Silakan pilih tanggal lain untuk melakukan booking."
+                );
+            } else {
+                return back()->withInput()->with('error', 
+                    "⚠️ KAPASITAS TIDAK MENCUKUPI - Hanya tersedia {$availableCapacity} slot untuk tanggal tersebut, tetapi Anda memilih {$request->number_of_people_232136} orang. Silakan kurangi jumlah orang atau pilih tanggal lain."
+                );
+            }
+        }
+
+        // Calculate total price
+        $totalPrice = $destination->price_232136 * $request->number_of_people_232136;
+
         $booking = Booking::create([
             'user_id_232136' => Auth::id(),
             'destination_id_232136' => $destinationId,
@@ -50,7 +70,7 @@ class BookingController extends Controller
             'number_of_people_232136' => $request->number_of_people_232136,
             'special_requests_232136' => $request->special_requests_232136,
             'status_232136' => 'pending',
-            'total_price_232136' => null,
+            'total_price_232136' => $totalPrice,
         ]);
 
         return redirect()->route('bookings.show', $booking->id)

@@ -36,6 +36,8 @@ class DestinationController extends Controller
             'description_232136' => 'nullable|string',
             'category_id_232136' => 'nullable|exists:categories_232136,id',
             'location_232136' => 'nullable|string|max:255',
+            'price_232136' => 'required|numeric|min:0',
+            'daily_capacity_232136' => 'required|integer|min:1',
             'image_232136' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -83,6 +85,8 @@ class DestinationController extends Controller
             'description_232136' => 'nullable|string',
             'category_id_232136' => 'nullable|exists:categories_232136,id',
             'location_232136' => 'nullable|string|max:255',
+            'price_232136' => 'required|numeric|min:0',
+            'daily_capacity_232136' => 'required|integer|min:1',
             'image_232136' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

@@ -123,4 +123,23 @@ class HomeController extends Controller
 
         return back()->with('success', 'Review berhasil ditambahkan!');
     }
+
+    public function checkCapacity(Request $request, $id)
+    {
+        $destination = Destination::findOrFail($id);
+        $date = $request->query('date');
+
+        if (!$date) {
+            return response()->json(['error' => 'Date is required'], 400);
+        }
+
+        $availableCapacity = $destination->getAvailableCapacityForDate($date);
+        $bookedCapacity = $destination->getBookedCapacityForDate($date);
+
+        return response()->json([
+            'available_capacity' => $availableCapacity,
+            'booked_capacity' => $bookedCapacity,
+            'daily_capacity' => $destination->daily_capacity_232136,
+        ]);
+    }
 }

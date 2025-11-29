@@ -291,7 +291,39 @@
                     </div>
 
                     <div class="border-t border-gray-200 pt-4 mb-4">
+                        <div class="bg-green-50 p-4 rounded-lg mb-3">
+                            <p class="text-sm text-gray-700 mb-1">Harga per orang</p>
+                            <p class="text-3xl font-bold text-green-600">Rp {{ number_format($destination->price_232136, 0, ',', '.') }}</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-3 border-2 border-blue-300">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center text-sm text-blue-800">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+                                    </svg>
+                                    <span class="font-bold">Kapasitas Harian</span>
+                                </div>
+                                <span class="text-2xl font-bold text-blue-700">{{ $destination->daily_capacity_232136 }}</span>
+                            </div>
+                            <p class="text-xs text-blue-700">
+                                <strong>Maksimal {{ $destination->daily_capacity_232136 }} orang</strong> dapat berkunjung per hari.
+                                Slot tersedia bervariasi per tanggal.
+                            </p>
+                        </div>
                         <p class="text-sm text-gray-600 mb-3">Nikmati pengalaman tak terlupakan di destinasi wisata pilihan ini!</p>
+                    </div>
+
+                    <!-- Capacity Notice -->
+                    <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-yellow-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <div>
+                                <p class="text-xs font-semibold text-yellow-800">Perhatian: Kapasitas Terbatas</p>
+                                <p class="text-xs text-yellow-700 mt-1">Kapasitas harian terbatas. Jika tanggal sudah penuh, pilih tanggal lain.</p>
+                            </div>
+                        </div>
                     </div>
 
                     @auth

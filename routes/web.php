@@ -16,6 +16,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/destinations', [HomeController::class, 'destinations'])->name('public.destinations');
 Route::get('/destination/{id}', [HomeController::class, 'show'])->name('public.destination.show');
 Route::post('/destination/{id}/review', [HomeController::class, 'storeReview'])->name('destination.review.store');
+Route::get('/api/destinations/{id}/capacity', [HomeController::class, 'checkCapacity'])->name('api.destinations.capacity');
 
 Route::middleware('guest')->group(function (){
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
