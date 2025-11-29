@@ -127,6 +127,27 @@
                     </div>
                 </div>
 
+                <!-- Price Information -->
+                <div class="mt-6 p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-lg border-2 border-green-200">
+                    <h3 class="font-bold text-gray-900 mb-3">Rincian Harga</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-700">Harga per orang:</span>
+                            <span class="font-semibold text-gray-900">Rp {{ number_format($booking->destination->price_232136, 0, ',', '.') }}</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-700">Jumlah orang:</span>
+                            <span class="font-semibold text-gray-900">{{ $booking->number_of_people_232136 }} orang</span>
+                        </div>
+                        <div class="border-t border-green-300 my-2 pt-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-base font-bold text-gray-900">Total Harga:</span>
+                                <span class="text-xl font-bold text-green-600">Rp {{ number_format($booking->total_price_232136, 0, ',', '.') }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 @if($booking->special_requests_232136)
                 <div class="mt-6 p-4 bg-gray-50 rounded-lg">
                     <p class="text-sm text-gray-600 font-semibold mb-2">Permintaan Khusus:</p>

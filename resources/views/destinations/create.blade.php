@@ -38,6 +38,20 @@
                         </div>
 
                         <div class="mb-4">
+                            <x-input-label for="price_232136" :value="__('Harga (per orang)')" />
+                            <x-text-input id="price_232136" class="block mt-1 w-full" type="number" name="price_232136" :value="old('price_232136', 0)" min="0" step="0.01" required />
+                            <x-input-error :messages="$errors->get('price_232136')" class="mt-2" />
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Harga tiket masuk per orang dalam Rupiah</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <x-input-label for="daily_capacity_232136" :value="__('Kapasitas Harian')" />
+                            <x-text-input id="daily_capacity_232136" class="block mt-1 w-full" type="number" name="daily_capacity_232136" :value="old('daily_capacity_232136', 100)" min="1" required />
+                            <x-input-error :messages="$errors->get('daily_capacity_232136')" class="mt-2" />
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Jumlah maksimal pengunjung per hari</p>
+                        </div>
+
+                        <div class="mb-4">
                             <x-input-label for="image_232136" :value="__('Gambar Utama')" />
                             <input id="image_232136" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" type="file" name="image_232136" accept="image/*" />
                             <x-input-error :messages="$errors->get('image_232136')" class="mt-2" />
