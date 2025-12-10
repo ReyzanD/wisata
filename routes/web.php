@@ -10,6 +10,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ReportController;
 
 // Public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -56,4 +57,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function (){
     // Admin Bookings Management
     Route::get('/bookings', [BookingController::class, 'adminIndex'])->name('admin.bookings.index');
     Route::post('/bookings/{id}/status', [BookingController::class, 'updateStatus'])->name('admin.bookings.updateStatus');
+
+    // Reports
+    Route::get('/reports/bookings', [ReportController::class, 'bookings'])->name('admin.reports.bookings');
+    Route::get('/reports/bookings/print', [ReportController::class, 'bookingsPrint'])->name('admin.reports.bookings.print');
 });

@@ -29,29 +29,32 @@ new class extends Component
                 </div>
 
                 <!-- Navigation Links -->
-<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-        {{ __('Dashboard') }}
-    </x-nav-link>
-    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')" wire:navigate>
-        {{ __('Kategori') }}
-    </x-nav-link>
-    <x-nav-link :href="route('destinations.index')" :active="request()->routeIs('destinations.*')" wire:navigate>
-        {{ __('Destinasi') }}
-    </x-nav-link>
-    <x-nav-link :href="route('galleries.index')" :active="request()->routeIs('galleries.*')" wire:navigate>
-        {{ __('Galeri') }}
-    </x-nav-link>
-    <x-nav-link :href="route('reviews.index')" :active="request()->routeIs('reviews.*')" wire:navigate>
-        {{ __('Ulasan') }}
-    </x-nav-link>
-    <x-nav-link :href="route('admin.bookings.index')" :active="request()->routeIs('admin.bookings.*')" wire:navigate>
-        {{ __('Booking') }}
-    </x-nav-link>
-    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')" wire:navigate>
-        {{ __('Pengguna') }}
-    </x-nav-link>
-</div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')" wire:navigate>
+                        {{ __('Kategori') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('destinations.index')" :active="request()->routeIs('destinations.*')" wire:navigate>
+                        {{ __('Destinasi') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('galleries.index')" :active="request()->routeIs('galleries.*')" wire:navigate>
+                        {{ __('Galeri') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('reviews.index')" :active="request()->routeIs('reviews.*')" wire:navigate>
+                        {{ __('Ulasan') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.bookings.index')" :active="request()->routeIs('admin.bookings.*')" wire:navigate>
+                        {{ __('Booking') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.reports.bookings')" :active="request()->routeIs('admin.reports.*')" wire:navigate>
+                        {{ __('Report') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')" wire:navigate>
+                        {{ __('Pengguna') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -115,6 +118,9 @@ new class extends Component
     </x-responsive-nav-link>
     <x-responsive-nav-link :href="route('admin.bookings.index')" :active="request()->routeIs('admin.bookings.*')" wire:navigate>
         {{ __('Booking') }}
+    </x-responsive-nav-link>
+    <x-responsive-nav-link :href="route('admin.reports.bookings')" :active="request()->routeIs('admin.reports.*')" wire:navigate>
+        {{ __('Report') }}
     </x-responsive-nav-link>
     <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')" wire:navigate>
         {{ __('Pengguna') }}
